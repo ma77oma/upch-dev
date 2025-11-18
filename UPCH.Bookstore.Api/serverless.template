@@ -1,0 +1,59 @@
+﻿AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: UPCH Bookstore API Serverless
+Globals:
+  Function:
+    Timeout: 30 # Aumentar el timeout (segundos) si tienes consultas complejas
+    MemorySize: 256 # Memoria asignada a la función Lambda (en MB)
+
+Resources:
+  BookstoreApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      # Handler: [Assembly]::[Namespace.ClaseLambda]::[Método]
+      # El método FunctionHandlerAsync se define en la clase base de APIGatewayProxyFunction
+      Handler: UPCH.Bookstore.Api::UPCH.Bookstore.Api.LambdaEntryPoint::FunctionHandlerAsync
+      Runtime: dotnet8 # O la versión de .NET Core que estés usando (e.g., dotnet8)
+      CodeUri: '' # El código será empaquetado y subido por el comando dotnet lambda deploy-serverless
+      
+      # 🛑 Configuración de VPC para la BD 🛑
+      VpcConfig:
+        SecurityGroupIds:
+          # Reemplaza con el ID de tu Security Group que puede acceder a RDS
+          - sg-046ea8c27b786f5bb
+        SubnetIds:
+          # Reemplaza con los ID de las subredes privadas donde reside tu RDS
+          - subnet-0ad08093fa9607012
+          - subnet-06e86d21e20c37b6b 
+
+      Policies:
+        - Statement:
+            Effect: Allow
+            Action:
+              # Permiso para leer el valor del secreto
+              - secretsmanager:GetSecretValue 
+            Resource:
+              # El ARN del secreto se ve así: arn:aws:secretsmanager:REGION:ACCOUNT-ID:secret:NAME-RANDOM
+              - arn:aws:secretsmanager:us-east-1:935244547013:secret:upch/dev/sqlserver-kTv45P
+
+      # 🛑 Variables de Entorno (Inyección de Configuración) 🛑
+      Environment:
+        Variables:
+          ASPNETCORE_ENVIRONMENT: Production
+          Database__SecretName: upch/dev/sqlserver
+      Events:
+        ProxyResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+} # Captura todas las rutas después de la raíz
+            Method: ANY
+        RootResource:
+          Type: Api
+          Properties:
+            Path: / # Captura la ruta raíz
+            Method: ANY
+
+Outputs:
+  ApiGatewayUrl:
+    Description: "API Gateway endpoint URL for Prod environment"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"

@@ -1,0 +1,6 @@
+@UPCH.Bookstore.Api_HostAddress = http://localhost:5270
+
+GET {{UPCH.Bookstore.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
