@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36511.14 d17.14
+VisualStudioVersion = 17.14.36511.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPCH.Bookstore.Api", "UPCH.Bookstore.Api\UPCH.Bookstore.Api.csproj", "{5B0A71D6-ABD3-4FCD-80C8-49052973BD9E}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPCH.Bookstore.Infrastructure", "UPCH.Bookstore.Infrastructure\UPCH.Bookstore.Infrastructure.csproj", "{746B100E-444D-4BD0-9063-1CEE7F2AB19E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPCH.Bookstore.Application", "UPCH.Bookstore.Application\UPCH.Bookstore.Application.csproj", "{8A7079C5-799D-45A8-B1D2-BA87603E27B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPCH.Bookstore.Tests", "UPCH.Bookstore.Tests\UPCH.Bookstore.Tests.csproj", "{129C39C5-5E7E-4A55-A2C1-96A91919E460}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8A7079C5-799D-45A8-B1D2-BA87603E27B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A7079C5-799D-45A8-B1D2-BA87603E27B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A7079C5-799D-45A8-B1D2-BA87603E27B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{129C39C5-5E7E-4A55-A2C1-96A91919E460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{129C39C5-5E7E-4A55-A2C1-96A91919E460}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{129C39C5-5E7E-4A55-A2C1-96A91919E460}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{129C39C5-5E7E-4A55-A2C1-96A91919E460}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

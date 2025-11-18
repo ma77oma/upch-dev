@@ -14,9 +14,9 @@ namespace UPCH.Bookstore.Application.Libros.Commands.UpdateLibro
                 .NotEmpty().WithMessage("El Título es obligatorio.")
                 .MaximumLength(255).WithMessage("El Título no puede exceder los 255 caracteres.");
 
-            RuleFor(x => x.ISBN)
-                .NotEmpty().WithMessage("El ISBN es obligatorio.")
-                .MaximumLength(13).WithMessage("El ISBN debe tener 13 caracteres.");
+            //RuleFor(x => x.ISBN)
+            //    .NotEmpty().WithMessage("El ISBN es obligatorio.")
+            //    .MaximumLength(13).WithMessage("El ISBN debe tener 13 caracteres.");
 
             RuleFor(x => x.AnioPublicacion)
                 .GreaterThan(0).WithMessage("El Año de Publicación debe ser mayor a cero.")

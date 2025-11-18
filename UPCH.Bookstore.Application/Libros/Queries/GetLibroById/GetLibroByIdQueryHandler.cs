@@ -21,13 +21,13 @@ namespace UPCH.Bookstore.Application.Libros.Queries.GetLibroById
                 Titulo = ent.Titulo,
                 ISBN = ent.ISBN,
                 AnioPublicacion = ent.AnioPublicacion,
-                Categoria = ent.Categoria!.Nombre,
-                Editorial = ent.Editorial!.Nombre,
-                Autores = [.. ent.LibroAutor.Select(x => new AutorDto
+                Categoria = ent.Categoria?.Nombre ?? "Categoría Desconocida",
+                Editorial = ent.Editorial?.Nombre ?? "Editorial Desconocida",
+                Autores = ent.LibroAutor?.Select(x => new AutorDto
                 {
-                    Nombre = x.Autor.Nombre,
-                    Rol = x.Posicion == 1 ? "Autor":"Coautor"
-                })]
+                    Nombre = x.Autor?.Nombre ?? "Autor Desconocido",
+                    Rol = x.Posicion == 1 ? "Autor" : "Coautor"
+                }).ToList()
             };
 
             return Result<LibroDto>.Success(dto);

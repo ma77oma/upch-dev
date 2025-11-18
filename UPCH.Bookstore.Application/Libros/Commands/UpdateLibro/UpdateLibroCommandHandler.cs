@@ -17,7 +17,6 @@ namespace UPCH.Bookstore.Application.Libros.Commands.UpdateLibro
                 return Result.Failure($"Libro con Id {request.Id} no encontrado.");
 
             existing.Titulo = request.Titulo;
-            existing.ISBN = request.ISBN ?? string.Empty;
             existing.AnioPublicacion = request.AnioPublicacion;
             existing.CantidadPaginas = request.CantidadPaginas;
             existing.CategoriaId = request.IdCategoria;
